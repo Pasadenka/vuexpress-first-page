@@ -8,3 +8,5 @@ Spuštění projektu
 `npm run server`
 
 Po spuštění aplikace na localhostu je na hlavní stránce rozcestník
+
+Každá stránka obsahuje výstup z Vue.js
