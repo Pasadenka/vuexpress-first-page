@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .finalMessage {
+        display: block;
+        margin-top: 30px;
+      }
+      .errors li {
+        color: red;
+      }
+    </style>
+
+    <div id="appForm">
+      <h1>This is registration to extraordinary squad.</h1>
+      <form @submit.prevent="checkForm" method="POST">
+        <fieldset>
+          <label for="name">Name</label>
+          <input type="text" v-model="name" />
+          <label for="surname">Surname</label>
+          <input type="text" v-model="surname" />
+          <label for="email">E-mail</label>
+          <input type="email" v-model="email" />
+          <label for="age">Age</label>
+          <input type="number" v-model="age" />
+          <label for="pet">Pet</label>
+          <select v-model="pet">
+            <option value="">--Please choose an option--</option>
+            <option value="Alien">Alien</option>
+            <option value="Predator">Predator</option>
+            <option value="Peter Porker">Peter Porker</option>
+            <option value="Godzilla">Godzilla</option>
+            <option value="Arachnit">Arachnit</option>
+          </select>
+        </fieldset>
+        <br />
+        <input type="submit" value="Become extra" />
+
+        <ul class="errors" v-for="error in errors">
+          <li>{{ error }}</li>
+        </ul>
+        <span class="finalMessage">
+          {{ message }}
+        </span>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  appForm = new Vue({
+    el: "#appForm",
+    data: {
+      errors: [],
+      name: null,
+      email: null,
+      surname: null,
+      age: null,
+      pet: null,
+      message: ""
+    },
+    methods: {
+      checkForm: function() {
+        // Clear errors for sure
+        this.errors = [];
+
+        // Check every single input if is filled or valid
+        if (!this.name || !this.trimSpace(this.name)) {
+          this.errors.push("Name is required");
+        }
+        if (!this.surname || !this.trimSpace(this.surname)) {
+          this.errors.push("Surname is required");
+        }
+        if (!this.email || !this.validEmail(this.email)) {
+          this.errors.push("Valid e-mail is required");
+        }
+        if (!this.age || isNaN(this.age)) {
+          this.errors.push("Valid age is required");
+        }
+        if (!this.pet) {
+          this.errors.push("Pet is required");
+        }
+
+        if (!this.errors.length) {
+          // Clear message
+          this.message = "";
+          // Run form process
+          this.processForm();
+        } else {
+          this.message = `Please fill all form items!`;
+        }
+      },
+      // Check valid email
+      validEmail: function(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      },
+      // Check if there are spaces in input
+      trimSpace: function(str) {
+        return str.trim();
+      },
+      processForm: function() {
+        // Something to do with form
+        if (!this.errors.length && this.age >= 18) {
+          console.log("If all items of form are filled and age is up 18");
+          this.message = `Dear ${this.name} ${
+            this.surname
+          }, and of course your lovely pet ${
+            this.pet
+          }. Welcome to extraordinary squad. We send you message to your mail ${
+            this.email
+          }`;
+        }
+        if (!this.errors.length && this.age < 18) {
+          this.message = `We are really sorry. You are to young to die. Please wait (18-age) and we'll be happy to welcome you to extraordinary squad.`;
+        }
+        if (this.errors.length) {
+          this.message = `Please fill all form items!`;
+        }
+      }
+    }
+  });
+</script>
