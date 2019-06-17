@@ -6,3 +6,5 @@ Složka `/public` obsahuje html soubory s příklady použití Vue.js a jeho vla
 
 Spuštění projektu
 `npm run server`
+
+Po spuštění aplikace na localhostu je na hlavní stránce rozcestník
