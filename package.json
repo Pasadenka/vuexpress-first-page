@@ -1,0 +1,24 @@
+{
+  "name": "expressdemo",
+  "version": "1.0.0",
+  "description": "My beautiful express first  class demo",
+  "prettier": "@hc-hefaistos/config-prettier",
+  "main": "index.js",
+  "scripts": {
+    "server": "node -r esm index.js"
+  },
+  "type": "module",
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "Jakub Dvořák",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@hc-hefaistos/prettier-config": "^1.1.0"
+  }
+}

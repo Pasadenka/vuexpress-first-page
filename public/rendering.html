@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>My first app</title>
+  </head>
+  <body>
+    <div id="app2">
+      <span v-bind:title="message">
+        Hover on me, you'll se title over me
+      </span>
+    </div>
+  </body>
+</html>
+
+<script>
+  var app2 = new Vue({
+    el: "#app2",
+    data: {
+      message: "date and time now is " + new Date().toLocaleTimeString()
+    }
+  });
+</script>

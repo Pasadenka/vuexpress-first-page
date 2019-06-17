@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app5">
+      <p>{{ message }}</p>
+
+      <button v-on:click="reverseMsg">Click me</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  app5 = new Vue({
+    el: "#app5",
+    data: {
+      message: "Hello my Vue.he.he.he!"
+    },
+    methods: {
+      reverseMsg: function() {
+        this.message = this.message
+          .split("")
+          .reverse()
+          .join("");
+      }
+    }
+  });
+</script>

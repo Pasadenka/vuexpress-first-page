@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app6">
+      <todo-item v-for="item in todos" v-bind:todo="item.text"> </todo-item>
+    </div>
+  </body>
+</html>
+
+<script>
+  Vue.component("todo-item", {
+    props: ["todo"],
+    template: "<li>{{  todo  }}</li>"
+  });
+  app6 = new Vue({
+    el: "#app6",
+    data: {
+      todos: [
+        { id: 1, text: "Clean" },
+        { id: 2, text: "Wash" },
+        { id: 3, text: "Clean again" }
+      ]
+    }
+  });
+</script>
