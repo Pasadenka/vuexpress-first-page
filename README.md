@@ -1,3 +1,10 @@
-# vuexpress-first-page
+## Tréninková aplikace Vue.js bežící na Express.js
+### 
+_______________________
 
-npm run server
+Spuštění projektu
+`npm run server`
+
+
+
+
